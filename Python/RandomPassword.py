@@ -4,7 +4,7 @@
 import PySimpleGUI as sg
 import random
 import string
-from subprocess import check_call
+import pyperclip
 
 sg.theme('reddit')
 
@@ -19,10 +19,6 @@ layout = [
 
 janela = sg.Window('Random Password Generator', layout=layout)
 seq = string.ascii_letters
-
-def copy2paste(t):
-    cmd='echo '+t.strip()+'|clip'
-    return check_call(cmd, shell=True)
 
 while True:
     eventos, valores = janela.read()
@@ -52,7 +48,7 @@ while True:
             continue
 
     if eventos == 'Copy':
-        copy2paste(result)
+        pyperclip.copy(result)
         
 
                           
